@@ -3,12 +3,7 @@
 <head>
   <title>DIEM Javascript Challenge</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <style>
-    .darkBg {background-color:black;}
-    .whiteBg{background-color:grey;}
-    .darkText{color:black;}
-    .whiteText{color: white;}
-  </style>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -54,9 +49,9 @@
                   <label class="control-label mr-3">
                     Skills:
                   </label>
-                  <button type="button" class="btn btn-success btn-sm" id="html" onclick="clickSkill(this.id)">HTML</button>
-                  <button type="button" class="btn btn-success btn-sm" id="css" onclick = "clickSkill(this.id)">CSS</button>
-                  <button type="button" class="btn btn-success btn-sm" id="javascript" onclick = "clickSkill(this.id)">JavaScript</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="html" onclick="clickSkill(this.id)" onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)">HTML</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="css" onclick = "clickSkill(this.id)"onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)" >CSS</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="javascript" onclick = "clickSkill(this.id)" onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)">JavaScript</button>
                 </div>
 
               </form>
@@ -82,63 +77,93 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script>
-    function nameFocusFunction(){
-      document.getElementById("nameOutput").innerHTML = "Hello there! What's your name?";}
 
-    function nameBlurFunction(){
-      if (document.getElementById("name").value == ""){
-        document.getElementById("nameOutput").innerHTML = "Please enter your name!" ; 
-      }
-      else{
-        document.getElementById("nameOutput").innerHTML = "Hi, " + document.getElementById("name").value +"!" ; 
-      }
-    }
-
-    function birthdayFocusFunction(){
-      document.getElementById("ageOutput").innerHTML = "Lemme guess, your age is..." ;}
-
-    function birthdayBlurFunction(){
-      if (document.getElementById("date").value.length == 0){
-        document.getElementById("ageOutput").innerHTML = "Please enter your birthday!";
-      }
-      else{
-        var year = (document.getElementById("date").value.split("-"))[0]
-        var age = new Date().getFullYear() - year;
-        document.getElementById("ageOutput").innerHTML =  "Your age is " + age + "!";
-      }
-    }
-
-    function switchDarkMode(){
-      document.getElementById("mode").className = "panel bg-dark text-white";
-      document.getElementById("themeOutput").innerHTML = "You chose Dark Mode!";
-    }
-
-    function switchLightMode(){
-      document.getElementById("mode").className = "panel bg-light text-dark";
-      document.getElementById("themeOutput").innerHTML = "You chose Light Mode!";
-    }
-
-    function clickSkill(btnID){
-      var btn = document.getElementById(btnID);
-      btn.parentNode.removeChild(btn);
-      document.getElementById("skillsOutput").appendChild(btn);
-      btn.onmouseover = changeRed;
-      btn.onmouseout = changeGreen;
-      btn.onclick = function() {removeSkill(btn, btnID)};
-
-      function changeRed(){btn.className = "btn btn-danger btn-sm mr-1";}
-      function changeGreen(){btn.className = "btn btn-success btn-sm mr-1";}
-    }
-
-    function removeSkill(btn,btnID){
-      btn.parentNode.removeChild(btn);
-      document.getElementById("skillChoices").appendChild(btn);
-      btn.onmouseover = null;
-      btn.onmouseout = null;
-      btn.onclick = function() {clickSkill(btnID)};
-      btn.className = "btn btn-success btn-sm mr-1";
-    }
-  </script>
 </body>
 </html>
+<script>
+  function nameFocusFunction(){
+    if (document.getElementById("name").value == ""){
+      document.getElementById("nameOutput").innerHTML = "Hello there! What's your name?";}
+    }
+
+  function nameBlurFunction(){
+    if (document.getElementById("name").value == ""){
+      document.getElementById("nameOutput").innerHTML = "Please enter your name!" ; 
+    }
+    else{
+      document.getElementById("nameOutput").innerHTML = "Hi, " + document.getElementById("name").value +"!" ; 
+    }
+  }
+
+  function birthdayFocusFunction(){
+    if (document.getElementById("date").value.length == 0){
+      document.getElementById("ageOutput").innerHTML = "Lemme guess, your age is...";
+    }
+  }
+
+  function birthdayBlurFunction(){
+    if (document.getElementById("date").value.length == 0){
+      document.getElementById("ageOutput").innerHTML = "Please enter your birthday!";
+    }
+    else{
+      var year = (document.getElementById("date").value.split("-"))[0];
+      var month = (document.getElementById("date").value.split("-"))[1];
+      var day = (document.getElementById("date").value.split("-"))[2]
+      
+      var currDate = new Date();
+
+      var age = 0;
+      if (currDate.getFullYear() > year){
+        if (currDate.getMonth() + 1 >= month){
+          if(currDate.getDate() >= day){
+            age = currDate.getFullYear() - year;
+          }
+          else{
+            age = currDate.getFullYear() - year - 1;
+          }
+        } 
+        else{
+          age = currDate.getFullYear() - year-1;
+        }
+      }
+
+      document.getElementById("ageOutput").innerHTML =  "Your age is " + age + "!";
+    }
+  }
+
+  function switchDarkMode(){
+    document.getElementById("mode").className = "panel bg-dark text-white";
+    document.getElementById("themeOutput").innerHTML = "You chose Dark Mode!";
+  }
+
+  function switchLightMode(){
+    document.getElementById("mode").className = "panel bg-light text-dark";
+    document.getElementById("themeOutput").innerHTML = "You chose Light Mode!";
+  }
+
+  function clickSkill(btnID){
+    var btn = document.getElementById(btnID);
+    btn.parentNode.removeChild(btn);
+    document.getElementById("skillsOutput").appendChild(btn);
+    btn.onclick = function() {removeSkill(btn, btnID)};
+  }
+
+  function removeSkill(btn,btnID){
+    btn.parentNode.removeChild(btn);
+    document.getElementById("skillChoices").appendChild(btn);
+    btn.onclick = function() {clickSkill(btnID)};
+    btn.className = "btn btn-success btn-sm mr-1";
+  }
+
+  function changeRed(btnID){
+    var btn = document.getElementById(btnID);
+    btn.className = "btn btn-danger btn-sm mr-1";
+  }
+
+  function changeGreen(btnID){
+    var btn = document.getElementById(btnID);
+    btn.className = "btn btn-success btn-sm mr-1";
+  }
+
+
+</script>
