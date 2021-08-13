@@ -5,47 +5,39 @@ function nameFocusFunction(){
 
 function nameBlurFunction(){
 	if (document.getElementById("name").value == ""){
-		document.getElementById("nameOutput").innerHTML = "Please enter your name!" ; 
-    }
-    else{
-		document.getElementById("nameOutput").innerHTML = "Hi, " + document.getElementById("name").value +"!" ; 
-	}
+		document.getElementById("nameOutput").innerHTML = "Please enter your name!" ;}
+	else{
+		document.getElementById("nameOutput").innerHTML = "Hi, " + document.getElementById("name").value +"!" ;}
 }
 
 function birthdayFocusFunction(){
 	if (document.getElementById("date").value.length == 0){
-		document.getElementById("ageOutput").innerHTML = "Lemme guess, your age is...";
-    }
-  }
+		document.getElementById("ageOutput").innerHTML = "Lemme guess, your age is...";}
+}
 
 function birthdayBlurFunction(){
 	if (document.getElementById("date").value.length == 0){
-		document.getElementById("ageOutput").innerHTML = "Please enter your birthday!";
-    }
-    else{
+		document.getElementById("ageOutput").innerHTML = "Please enter your birthday!";}
+	else{
 		var year = (document.getElementById("date").value.split("-"))[0];
-      	var month = (document.getElementById("date").value.split("-"))[1];
-      	var day = (document.getElementById("date").value.split("-"))[2]
-      
-      	var currDate = new Date();
+	  	var month = (document.getElementById("date").value.split("-"))[1];
+	  	var day = (document.getElementById("date").value.split("-"))[2]
+	  
+	  	var currDate = new Date();
 
-      	var age = 0;
-      	if (currDate.getFullYear() > year){
-        	if (currDate.getMonth() + 1 >= month){
-          		if(currDate.getDate() >= day){
-            		age = currDate.getFullYear() - year;
-          		}
-          		else{
-            		age = currDate.getFullYear() - year - 1;
-          		}
-        	} 
-        	else{
-          		age = currDate.getFullYear() - year-1;
-        	}
-      	}
-
-      	document.getElementById("ageOutput").innerHTML =  "Your age is " + age + "!";
-    }
+	  	var age = 0;
+	  	if (currDate.getFullYear() > year){
+			if (currDate.getMonth() + 1 >= month){
+		  		if(currDate.getDate() >= day){
+					age = currDate.getFullYear() - year;}
+		  		else{
+					age = currDate.getFullYear() - year - 1;}
+			} 
+			else{
+		  		age = currDate.getFullYear() - year-1;}
+	  	}
+	  	document.getElementById("ageOutput").innerHTML =  "Your age is " + age + "!";
+	}
 }
 
 function switchDarkMode(){
