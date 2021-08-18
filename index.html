@@ -21,14 +21,14 @@
                   <label class="control-label" for="name">
                     Name:
                   </label>
-                  <input class="form-control" type="text" id="name" name="name" onfocus = "nameFocusFunction()" onblur = "nameBlurFunction()"/>
+                  <input class="form-control" type="text" id="name" name="name"/>
                 </div>
                 <!-- Birthday -->
                 <div class="form-group">
                   <label class="control-label" for="birthday">
                     Birthday:
                   </label>
-                  <input class="form-control" id="date" name="date" type="date" onfocus = "birthdayFocusFunction()" onblur = "birthdayBlurFunction()"/>
+                  <input class="form-control" id="date" name="date" type="date"/>
                 </div>
                 <!-- Choose Theme -->
                 <div class="form-group">
@@ -36,11 +36,11 @@
                     Choose Theme:
                   </label>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modeOptions" id="light" value="Light" onclick = "switchLightMode()">
+                    <input class="form-check-input" type="radio" name="modeOptions" id="light" value="Light">
                     <label class="form-check-label" for="light">Light Mode</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modeOptions" id="dark" value="Dark" onclick="switchDarkMode()">
+                    <input class="form-check-input" type="radio" name="modeOptions" id="dark" value="Dark">
                     <label class="form-check-label" for="dark">Dark Mode</label>
                   </div>
                 </div>
@@ -49,9 +49,9 @@
                   <label class="control-label mr-3">
                     Skills:
                   </label>
-                  <button type="button" class="btn btn-success btn-sm mr-1" id="html" onclick="clickSkill(this.id)" onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)">HTML</button>
-                  <button type="button" class="btn btn-success btn-sm mr-1" id="css" onclick = "clickSkill(this.id)"onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)" >CSS</button>
-                  <button type="button" class="btn btn-success btn-sm mr-1" id="javascript" onclick = "clickSkill(this.id)" onmouseover = "changeRed(this.id)" onmouseout="changeGreen(this.id)">JavaScript</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="html" >HTML</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="css" >CSS</button>
+                  <button type="button" class="btn btn-success btn-sm mr-1" id="javascript" >JavaScript</button>
                 </div>
 
               </form>
