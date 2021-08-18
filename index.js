@@ -1,3 +1,30 @@
+var nameInput = document.getElementById("name")
+nameInput.onfocus = nameFocusFunction;
+nameInput.onblur = nameBlurFunction;
+
+var dateInput = document.getElementById("date");
+dateInput.onfocus = birthdayFocusFunction;
+dateInput.onblur = birthdayBlurFunction;
+
+document.getElementById("light").onclick = switchLightMode;
+document.getElementById("dark").onclick = switchDarkMode;
+
+var htmlSkill = document.getElementById("html")
+htmlSkill.onclick = function() {clickSkill(this.id)};
+htmlSkill.onmouseover = function() {changeRed(this.id)};
+htmlSkill.onmouseout = function() {changeGreen(this.id)};
+
+var cssSkill = document.getElementById("css")
+cssSkill.onclick = function() {clickSkill(this.id)};
+cssSkill.onmouseover = function() {changeRed(this.id)};
+cssSkill.onmouseout = function() {changeGreen(this.id)};
+
+var jsSkill = document.getElementById("javascript")
+jsSkill.onclick = function() {clickSkill(this.id)};
+jsSkill.onmouseover = function() {changeRed(this.id)};
+jsSkill.onmouseout = function() {changeGreen(this.id)};
+
+
 function nameFocusFunction(){
 	if (document.getElementById("name").value == ""){
 		document.getElementById("nameOutput").innerHTML = "Hello there! What's your name?";}
